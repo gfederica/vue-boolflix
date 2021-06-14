@@ -64,6 +64,7 @@ export default {
 
 <style lang="scss">
 @import '~bootstrap/scss/bootstrap';
+@import '~@fortawesome/fontawesome-free/css/all.min.css';
 @import "./style/general.scss";
 @import "./style/mixins.scss";
 

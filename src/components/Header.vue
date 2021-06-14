@@ -43,5 +43,10 @@ export default {
       img {
         height: 50px;
       }
+
+      .btn {
+        background-color: $mainRed;
+        border: 1px solid $mainRed;
+      }
   }
 </style>
