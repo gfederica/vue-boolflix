@@ -1,28 +1,41 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Header/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import axios from 'axios';
+import Header from './components/Header.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Header
+  },
+  data: function() {
+    return {
+        query: "prova"
+    }
+},
+  created: function() {
+    axios
+    .get ('https://api.themoviedb.org/3/search/movie', {
+      params: {
+        api_key: 'aaabb03d86cce59a53d13306abfb0d37',
+        query: this.query,
+        language: "it-IT"
+      }
+    })
+    .then (
+        (res) => {
+            console.log(res);
+        }
+    );
   }
 }
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+@import '~bootstrap/scss/bootstrap';
 </style>
