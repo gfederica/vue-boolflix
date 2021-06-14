@@ -17,12 +17,13 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+@import "../style/general.scss";
+@import "../style/mixins.scss";;
   header {
     background-color: black;
 
       .flex {
-        display: flex;
-        align-items: center;
+        @include flex;
         justify-content: space-between;
         height: 10vh;
       }

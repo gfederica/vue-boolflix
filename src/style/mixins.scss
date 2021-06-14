@@ -1,0 +1,18 @@
+ 
+@import "../style/general.scss";
+
+ @mixin flex {
+     display: flex;
+     align-items: center;
+ }
+ @mixin flex-vertical-only {
+     display: flex;
+     align-items: center;
+ }
+
+ @mixin flex-column-wrap {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+ }
