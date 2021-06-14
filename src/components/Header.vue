@@ -1,24 +1,36 @@
 <template>
   <header>
     <div class="container flex">
-    <img src="../assets/streamflix-logo.png" alt="logo">
-    <div class="input">
-      <input type="text" class="form-control" placeholder="Cerca un film..">
-    </div>
+      <img src="../assets/streamflix-logo.png" alt="logo">
+      <form class="flex">
+        <div class="input">
+          <input type="text" class="form-control" placeholder="Cerca un film.." v-model.trim="searchMovie"
+              @keyup="$emit('performSearch', searchMovie)">
+            
+              
+              
+        </div>
+        <button type="submit" class="btn btn-primary m-2" @click.prevent="$emit('performSearch', searchMovie)">Cerca</button>
+      </form>
     </div>
   </header>
 </template>
 
 <script>
 export default {
-  name: 'Header'
+  name: 'Header',
+  data: function() {
+      return {
+          searchMovie: ""
+      }
+  }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 @import "../style/general.scss";
-@import "../style/mixins.scss";;
+@import "../style/mixins.scss";
   header {
     background-color: black;
 

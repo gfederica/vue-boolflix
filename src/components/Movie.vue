@@ -1,9 +1,9 @@
 <template>
   <div class="film m-3 p-2">
-    <h3>{{ item.title }}</h3>
-    <h4>{{ item.original_title }}</h4>
-    <h4>{{ item.original_language }}</h4>
-    <h5>{{ item.vote_average }}</h5>
+    <h3>Titolo: {{ item.title }}</h3>
+    <h5>Titolo originale: {{ item.original_title }}</h5>
+    <h5>Lingua Originale: {{ item.original_language }}</h5>
+    <h6>Voto: {{ item.vote_average }}</h6>
   </div>
 </template>
 

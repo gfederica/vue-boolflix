@@ -1,13 +1,16 @@
 <template>
   <div id="app">
-    <Header/>
+    <Header @performSearch='searchResult'/>
     <main>
-      <Movies/>
+      <Movies :list="filteredMovies"/>
     </main>
   </div>
 </template>
 
 <script>
+
+import axios from 'axios';
+
 import Header from './components/Header.vue';
 import Movies from './components/Movies.vue';
 
@@ -16,7 +19,44 @@ export default {
   components: {
     Header,
     Movies
-  }
+  },
+
+    data: function() {
+        return {
+            allMovies: [],
+            query: ""
+        }
+    },
+    methods: {
+      searchResult: function(input) {
+        if (input.trim() == '') {
+          this.allMovies = [];
+        } else if (input.trim() != '') {
+          axios
+         .get ('https://api.themoviedb.org/3/search/movie', {
+          params: {
+            api_key: 'aaabb03d86cce59a53d13306abfb0d37',
+            query: input,
+            language: "it-IT"
+        }
+        })
+         .then (
+            (res) => {
+                this.allMovies = res.data.results;
+                console.log(this.allMovies)
+            }
+        );        
+        }
+      }
+    },
+    computed: {
+      filteredMovies: function() {
+        const newArray = this.allMovies.filter ((element) => {
+            return element.title.includes(this.query)
+        });
+        return newArray;        
+      }
+}
 }
 </script>
 
