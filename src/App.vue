@@ -2,7 +2,7 @@
   <div id="app">
     <Header @performSearch='searchResult'/>
     <main>
-      <Movies :list="filteredMovies"/>
+      <Movies :list="filteredMovies" :emptySearch="empty"/>
     </main>
   </div>
 </template>
@@ -24,13 +24,15 @@ export default {
     data: function() {
         return {
             allMovies: [],
-            query: ""
+            query: "",
+            empty: false
         }
     },
     methods: {
       searchResult: function(input) {
         if (input.trim() == '') {
           this.allMovies = [];
+          this.empty = true;
         } else if (input.trim() != '') {
           axios
          .get ('https://api.themoviedb.org/3/search/movie', {
