@@ -1,7 +1,7 @@
 <template>
     <div class="container">
-        <div class="row p-5" v-if="list.length > 0">
-            <div class="col-6 col-md-4 col-lg-3" v-for="(listItem, index) in list" :key="index">
+        <div class="row p-4" v-if="list.length > 0">
+            <div class="col-6 col-md-4 col-lg-4" v-for="(listItem, index) in list" :key="index">
                 <Movie :item="listItem" :style="{'background-image': 'url(' + poster + listItem.poster_path + ')'}"/>
             </div>
         </div>
