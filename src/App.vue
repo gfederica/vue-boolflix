@@ -2,7 +2,7 @@
   <div id="app">
     <Header @performSearch='searchResult'/>
     <main>
-      <Movies :list="filteredMovies"/>
+      <Movies :list="filteredMovies" :poster="imageUrl"/>
     </main>
   </div>
 </template>
@@ -25,7 +25,8 @@ export default {
         return {
             allMovies: [],
             allSeries: [],
-            query: ""
+            query: "",
+            imageUrl: "https://image.tmdb.org/t/p/w342"
         }
     },
     methods: {
