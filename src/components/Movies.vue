@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <div class="row p-5" v-if="!emptySearch">
+        <div class="row p-5" v-if="list.length > 0">
             <div class="col-6 col-md-4 col-lg-3" v-for="(listItem, index) in list" :key="index">
                 <Movie :item="listItem"/>
             </div>
@@ -14,7 +14,7 @@ import Movie from './Movie.vue';
 
 export default {
     name: 'Movies',
-    props: ["list", "emptySearch"],
+    props: ["list"],
     components: {
         Movie
     }

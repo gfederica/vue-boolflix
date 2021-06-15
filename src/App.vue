@@ -2,7 +2,7 @@
   <div id="app">
     <Header @performSearch='searchResult'/>
     <main>
-      <Movies :list="filteredMovies" :emptySearch="empty"/>
+      <Movies :list="filteredMovies"/>
     </main>
   </div>
 </template>
@@ -24,16 +24,17 @@ export default {
     data: function() {
         return {
             allMovies: [],
-            query: "",
-            empty: false
+            allSeries: [],
+            query: ""
         }
     },
     methods: {
       searchResult: function(input) {
         if (input.trim() == '') {
           this.allMovies = [];
-          this.empty = true;
+          this.allSeries = [];
         } else if (input.trim() != '') {
+          // chiamata film
           axios
          .get ('https://api.themoviedb.org/3/search/movie', {
           params: {
@@ -45,18 +46,29 @@ export default {
          .then (
             (res) => {
                 this.allMovies = res.data.results;
-                console.log(this.allMovies)
             }
-        );        
+        );  
+        // chiamata serie
+        axios
+         .get ('https://api.themoviedb.org/3/search/tv', {
+          params: {
+            api_key: 'aaabb03d86cce59a53d13306abfb0d37',
+            query: input,
+            language: "it-IT"
+        }
+        })
+         .then (
+            (res) => {
+                this.allSeries = res.data.results;
+            }
+        ); 
         }
       }
     },
     computed: {
       filteredMovies: function() {
-        const newArray = this.allMovies.filter ((element) => {
-            return element.title.includes(this.query)
-        });
-        return newArray;        
+        const newArray = [...this.allMovies, ...this.allSeries];
+        return newArray;
       }
 }
 }

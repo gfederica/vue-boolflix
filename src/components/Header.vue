@@ -4,13 +4,10 @@
       <img src="../assets/streamflix-logo.png" alt="logo">
       <form class="flex">
         <div class="input">
-          <input type="text" class="form-control" placeholder="Cerca un film.." v-model.trim="searchMovie"
-              @keyup="$emit('performSearch', searchMovie)">
-            
-              
-              
+          <input type="text" class="form-control" placeholder="Cerca un film.." v-model.trim="searchItem"
+              @keyup="$emit('performSearch', searchItem)">
         </div>
-        <button type="submit" class="btn btn-primary m-2" @click.prevent="$emit('performSearch', searchMovie)">Cerca</button>
+        <button type="submit" class="btn btn-primary m-2" @click.prevent="$emit('performSearch', searchItem)">Cerca</button>
       </form>
     </div>
   </header>
@@ -21,7 +18,7 @@ export default {
   name: 'Header',
   data: function() {
       return {
-          searchMovie: ""
+          searchItem: ""
       }
   }
 }
