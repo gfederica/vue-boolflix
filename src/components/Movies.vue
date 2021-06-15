@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row p-5" v-if="list.length > 0">
             <div class="col-6 col-md-4 col-lg-3" v-for="(listItem, index) in list" :key="index">
-                <Movie :item="listItem" v-bind:style="{ 'background-image': 'url(' + poster + listItem.poster_path + ')' }"/>
+                <Movie :item="listItem" :style="{'background-image': 'url(' + poster + listItem.poster_path + ')'}"/>
             </div>
         </div>
         <div v-else class="alert"><h1>Inserisci il titolo di un film o una serie TV</h1></div>

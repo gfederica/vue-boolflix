@@ -7,7 +7,7 @@
         <span v-else-if="(item.original_language === 'it')"><img :src="this.language.italian" alt="" class="flag-icon"></span>
         <span  v-else-if="(item.original_language === 'en')"><img :src="this.language.english" alt="" class="flag-icon"></span>
     </h5> 
-    <h6>Voto: {{ item.vote_average }}</h6>
+    <h6>Voto: <i v-for="(star,index) in 5" :key="index" :class="(star <= Math.ceil(item.vote_average / 2))? 'fas fa-star': 'far fa-star'"></i></h6>
   </div>
 </template>
 
@@ -17,10 +17,7 @@ export default {
     props: ["item"],
     data: function() {
         return {
-            language: {
-                italian: require("../assets/it.png"),
-                english: require("../assets/en.png")
-            }
+            star: ""
         }
     }
 }
@@ -30,7 +27,11 @@ export default {
     @import "../style/mixins.scss";
     @import "../style/general.scss";
     .film {
-        background-color: $lighterGrey;
+        background-color: black;
+        background-position: center;
+        background-size: 85%;
+        background-repeat: no-repeat;
+        
         color: $mainText;
         height: 320px;
 
