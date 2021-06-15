@@ -2,13 +2,14 @@
   <div class="film m-3">
     <div class="cover p-2">
         <h3>{{ item.title || item.name }}</h3>
-        <h5>Titolo originale: {{ item.original_title || item.original_name }}</h5>
-        <h5>Lingua Originale:
+        <h6>Titolo originale: {{ item.original_title || item.original_name }}</h6>
+        <h6>Lingua originale:
             <span v-if="(item.original_language != 'en' && item.original_language != 'it')">{{ item.original_language }}</span>
             <span v-else-if="(item.original_language === 'it')"><img :src="this.language.italian" alt="" class="flag-icon"></span>
             <span  v-else-if="(item.original_language === 'en')"><img :src="this.language.english" alt="" class="flag-icon"></span>
-        </h5> 
-        <h6>Voto: <i v-for="(star,index) in 5" :key="index" :class="(star <= Math.ceil(item.vote_average / 2))? 'fas fa-star': 'far fa-star'"></i></h6>
+        </h6> 
+        <p>Voto: <i v-for="(star,index) in 5" :key="index" :class="(star <= Math.ceil(item.vote_average / 2))? 'fas fa-star': 'far fa-star'"></i></p>
+        <p class="text" v-if="item.overview != ''">{{ item.overview }}</p>
     </div>
   </div>
 </template>
@@ -42,6 +43,10 @@ export default {
         width: 342px;
         height: 457px;
 
+        i {
+            color: #F7F625;
+        }
+
         .cover {
             background-color: rgba($color: #000000, $alpha: 0.8);
             height: 100%;
@@ -50,6 +55,12 @@ export default {
 
             &:hover {
                 opacity: 1;
+            }
+
+            .text {
+                height: 280px;
+                font-size: 18px;
+                overflow-y: scroll;
             }
         }
 
