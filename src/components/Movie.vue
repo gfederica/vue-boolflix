@@ -58,7 +58,7 @@ export default {
             }
 
             .text {
-                height: 280px;
+                height: 50%;
                 font-size: 18px;
                 overflow-y: scroll;
             }
