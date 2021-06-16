@@ -2,7 +2,7 @@
   <div id="app">
     <Header @performSearch='searchResult'/>
     <main>
-      <Movies :list="filteredMovies" :poster="imageUrl"/>
+      <Movies :movieList="this.allMovies" :seriesList="this.allSeries" :poster="imageUrl" :searching="search"/>
     </main>
   </div>
 </template>
@@ -26,7 +26,8 @@ export default {
             allMovies: [],
             allSeries: [],
             query: "",
-            imageUrl: "https://image.tmdb.org/t/p/w342"
+            imageUrl: "https://image.tmdb.org/t/p/w342",
+            search: false
         }
     },
     methods: {
@@ -47,6 +48,7 @@ export default {
          .then (
             (res) => {
                 this.allMovies = res.data.results;
+                this.search = true;
             }
         );  
         // chiamata serie
@@ -61,6 +63,7 @@ export default {
          .then (
             (res) => {
                 this.allSeries = res.data.results;
+                this.search = true;
             }
         ); 
         }
