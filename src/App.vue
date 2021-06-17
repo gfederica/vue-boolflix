@@ -51,20 +51,19 @@ export default {
         // chiamata serie
         axios
          .get ('https://api.themoviedb.org/3/search/tv', {
-          params: {
-            api_key: 'aaabb03d86cce59a53d13306abfb0d37',
-            query: input,
-            language: "it-IT"
-        }
-        })
+            params: {
+              api_key: 'aaabb03d86cce59a53d13306abfb0d37',
+              query: input,
+              language: "it-IT"
+          }
+          })
          .then (
             (res) => {
                 this.allSeries = res.data.results;
-            }
-        ); 
-        }
+            }); 
       }
     }
+  }
 }
 </script>
 
